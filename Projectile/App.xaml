@@ -1,0 +1,21 @@
+﻿<Application x:Class="Projectile.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Projectile"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        
+        <Style x:Key="TextboxFont">
+            <Setter Property="TextElement.FontFamily"
+               Value="/Resoursec/MainFont.otf"/>
+        </Style>
+        <Style x:Key="ButtonFont">
+            <Setter Property="TextElement.FontFamily"
+               Value="/Resoursec/MainFont.otf"/>
+        </Style>
+        <Style x:Key="LableFont">
+            <Setter Property="TextElement.FontFamily"
+               Value="/Resoursec/MainFont.otf"/>
+        </Style>
+    </Application.Resources>
+</Application>

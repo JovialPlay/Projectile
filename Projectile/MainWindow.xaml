@@ -1,0 +1,14 @@
+﻿<Window x:Class="Projectile.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:UserControl="clr-namespace:Projectile.View.UserControls"
+        xmlns:UserLayout="clr-namespace:Projectile.View.UserLayouts"
+        xmlns:local="clr-namespace:Projectile"
+        mc:Ignorable="d"
+        Title="Projectile" Height="450" Width="800">
+    <Window.Resources>
+    </Window.Resources>
+    <Frame Source="MainPage.xaml"/>
+</Window>

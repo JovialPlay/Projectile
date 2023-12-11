@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projectile.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projectile.View.UserLayouts
+namespace Projectile.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ProjectLayout.xaml
+    /// Логика взаимодействия для ProjectPage.xaml
     /// </summary>
-    public partial class ProjectLayout : UserControl
+    public partial class ProjectPage : Page
     {
-        public ProjectLayout()
+        ProjectPageViewModel ppvm {  get; set; }
+        public ProjectPage(Frame frame)
         {
             InitializeComponent();
+            ppvm = new ProjectPageViewModel(frame);
+            ProjectsBar.ProjectTemplate.ItemsSource = ppvm.FakeProjects;
         }
     }
 }

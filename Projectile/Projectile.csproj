@@ -55,8 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View\Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Model\FakeBoard.cs" />
+    <Compile Include="Model\FakeProject.cs" />
+    <Compile Include="MVVM\RelayCommand.cs" />
+    <Compile Include="MVVM\ViewModelBase.cs" />
+    <Compile Include="ViewModel\BoardPageViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProjectPageViewModel.cs" />
+    <Compile Include="ViewModel\ProjectViewModel.cs" />
+    <Compile Include="View\Pages\BoardPage.xaml.cs">
+      <DependentUpon>BoardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ProjectPage.xaml.cs">
+      <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\TaskPage.xaml.cs">
+      <DependentUpon>TaskPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\TodayPage.xaml.cs">
+      <DependentUpon>TodayPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\BoardView.xaml.cs">
       <DependentUpon>BoardView.xaml</DependentUpon>
@@ -79,18 +96,6 @@
     <Compile Include="View\UserControls\TodayView.xaml.cs">
       <DependentUpon>TodayView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserLayouts\BoardLayout.xaml.cs">
-      <DependentUpon>BoardLayout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserLayouts\ProjectLayout.xaml.cs">
-      <DependentUpon>ProjectLayout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserLayouts\TaskLayout.xaml.cs">
-      <DependentUpon>TaskLayout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserLayouts\TodayLAyout.xaml.cs">
-      <DependentUpon>TodayLAyout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\UserForm.xaml.cs">
       <DependentUpon>UserForm.xaml</DependentUpon>
     </Compile>
@@ -110,7 +115,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\MainPage.xaml">
+    <Page Include="View\Pages\BoardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\TaskPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\TodayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,22 +156,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\TodayView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserLayouts\BoardLayout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserLayouts\ProjectLayout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserLayouts\TaskLayout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserLayouts\TodayLAyout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,7 +191,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Class Exmaples\" />
+    <Resource Include="View\UserControls\Arrow.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\UserControls\Find.png" />
@@ -228,5 +229,6 @@
   <ItemGroup>
     <Resource Include="View\Windows\149071.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projectile.View.UserLayouts
+namespace Projectile.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для TaskLayout.xaml
+    /// Логика взаимодействия для TodayPage.xaml
     /// </summary>
-    public partial class TaskLayout : UserControl
+    public partial class TodayPage : Page
     {
-        public TaskLayout()
+        public TodayPage()
         {
             InitializeComponent();
         }

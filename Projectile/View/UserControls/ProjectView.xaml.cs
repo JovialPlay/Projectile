@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projectile.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,32 +24,6 @@ namespace Projectile.View.UserControls
         public ProjectView()
         {
             InitializeComponent();
-        }
-
-        private string projectname;
-        private string projectdescription;
-        
-        public string Projectname
-        { 
-            get { return projectname; }
-            set 
-            { 
-                projectname = value; 
-                ProjectLabel.Content = projectname;
-            }
-        }
-        public string Projectdescription
-        { get { return projectdescription; } 
-            set 
-            { 
-            projectdescription = value;
-            ProjectDescriptionl.Content = projectdescription;
-            }
-        }
-
-        private void ProjectLabel_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            ProjectLabel.FontSize = e.NewSize.Height-e.NewSize.Width/17-2;
         }
     }
 }

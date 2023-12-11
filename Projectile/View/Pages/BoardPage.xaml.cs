@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projectile.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,15 @@ using System.Windows.Shapes;
 namespace Projectile.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для BoardPage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class BoardPage : Page
     {
-        public MainPage()
+        public BoardPage()
         {
             InitializeComponent();
+            BoardPageViewModel boardPageViewModel = new BoardPageViewModel();
+            BoardBar.BoardTemplate.ItemsSource = boardPageViewModel.FakeBoards;
         }
     }
 }

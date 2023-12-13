@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:UserControl="clr-namespace:Projectile.View.UserControls"
+      xmlns:vm="clr-namespace:Projectile.ViewModel"
       xmlns:local="clr-namespace:Projectile.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -20,6 +20,79 @@
             </Rectangle.Effect>
         </Rectangle>
         <Label Content="Мои Проекты" Foreground="Black" FontFamily="Segoe Script" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center"/>
-        <UserControl:ProjectView Grid.Row="1" x:Name="ProjectsBar" Grid.Column="1" Margin="10 10 10 10"/>
+        <Grid Grid.Row="1" x:Name="ProjectsBar" Grid.Column="1" Margin="10 10 10 10">
+            <ItemsControl x:Name="ProjectTemplate" Background="Transparent">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Margin="5 5 5 5" Columns="2"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="7 7 7 7">
+                            <Button Command="{Binding ElementName=ProjectTemplate, 
+                                    Path=DataContext.GoToBoards}"
+                                    CommandParameter="{Binding}"
+                                    Background="Transparent"
+                                    Panel.ZIndex="1"/>
+                            <Rectangle     
+                                    RadiusX="10" 
+                                    RadiusY="10" 
+                                    Stroke="#000000"
+                                    StrokeThickness="0.5"
+                                    >
+                                <Rectangle.Effect>
+                                    <DropShadowEffect  ShadowDepth="4" BlurRadius="12" Color="#1C0E00"/>
+                                </Rectangle.Effect>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#ffbf66"/>
+                                        <GradientStop Color="#543407"  Offset="1.2"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="80*"/>
+                                </Grid.RowDefinitions>
+                                <Rectangle Grid.Row="0"
+                   Margin=" 7 7 7 7"
+                   RadiusX="10" 
+                   RadiusY="10"
+                   Fill="#FFFFFF" 
+                   StrokeThickness="0"
+                   />
+                                <Label 
+            Grid.Row="0"
+            x:Name="ProjectLabel"
+            Style="{StaticResource ButtonFont}"
+            Margin="0 0 0 0"
+            Content="{Binding Path=Name}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            />
+                                <Rectangle Grid.Row="1"
+                    Margin="9 9 9 9"
+       RadiusX="10" 
+       RadiusY="10"
+       Fill="#FFFFFF" 
+       StrokeThickness="0"
+       />
+                                <Label 
+            Grid.Row="1"
+            x:Name="ProjectDescriptionl"
+            Style="{StaticResource ButtonFont}"
+            Margin="7 7 7 7"
+            Content="{Binding Path=Description}"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            />
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
     </Grid>
 </Page>

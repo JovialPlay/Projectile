@@ -1,4 +1,6 @@
-﻿using Projectile.View.Pages;
+﻿using Projectile.Navigation;
+using Projectile.View;
+using Projectile.View.Pages;
 using Projectile.View.UserControls;
 using Projectile.ViewModel;
 using System;
@@ -21,11 +23,11 @@ namespace Projectile
     public partial class MainWindow : Window
     {
         public MainWindowViewModel mainWindowViewModel { get; set; }
+        public NavigationStore navigationStore { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             mainWindowViewModel = new MainWindowViewModel(MainFrame);
-            MainFrame.Navigate(new ProjectPage(this.MainFrame));
         }
     }
 }

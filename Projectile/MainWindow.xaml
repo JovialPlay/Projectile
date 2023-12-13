@@ -4,15 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:UserControl="clr-namespace:Projectile.View.UserControls"
-        xmlns:local="clr-namespace:Projectile"
+        xmlns:local="clr-namespace:Projectile" 
+        xmlns:viewmodel="clr-namespace:Projectile.ViewModel" 
+        xmlns:View="clr-namespace:Projectile.View.Pages" d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="Projectile" 
         Height="450" 
         Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow">
-    <Window.Resources>
-    </Window.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Background2.jpg"/>

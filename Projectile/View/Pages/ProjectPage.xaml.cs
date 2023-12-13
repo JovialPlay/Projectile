@@ -1,4 +1,5 @@
-﻿using Projectile.ViewModel;
+﻿using Projectile.Navigation;
+using Projectile.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,13 @@ namespace Projectile.View.Pages
     public partial class ProjectPage : Page
     {
         ProjectPageViewModel ppvm {  get; set; }
-        public ProjectPage(Frame frame)
+        public ProjectPage(NavigationStore navigationStore)
         {
             InitializeComponent();
-            ppvm = new ProjectPageViewModel(frame);
-            ProjectsBar.ProjectTemplate.ItemsSource = ppvm.FakeProjects;
+            ppvm = new ProjectPageViewModel(navigationStore);
+            ProjectTemplate.ItemsSource = ppvm.FakeProjects;
+            ProjectTemplate.DataContext = ppvm;
+            DataContext=ppvm;
         }
     }
 }

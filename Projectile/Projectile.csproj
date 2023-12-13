@@ -59,10 +59,12 @@
     <Compile Include="Model\FakeProject.cs" />
     <Compile Include="MVVM\RelayCommand.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
+    <Compile Include="Navigation\NavigationCommand.cs" />
+    <Compile Include="Navigation\NavigationStore.cs" />
     <Compile Include="ViewModel\BoardPageViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ProjectPageViewModel.cs" />
-    <Compile Include="ViewModel\ProjectViewModel.cs" />
+    <Compile Include="ViewModel\TodayPageViewModel.cs" />
     <Compile Include="View\Pages\BoardPage.xaml.cs">
       <DependentUpon>BoardPage.xaml</DependentUpon>
     </Compile>
@@ -83,9 +85,6 @@
     </Compile>
     <Compile Include="View\UserControls\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControls\ProjectView.xaml.cs">
-      <DependentUpon>ProjectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\CardView.xaml.cs">
       <DependentUpon>CardView.xaml</DependentUpon>
@@ -140,10 +139,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\Menu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControls\ProjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -229,6 +224,19 @@
   <ItemGroup>
     <Resource Include="View\Windows\149071.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\..\Other\Study\Programming\C#\Lab5 SoftConstr\BLL\BLL.csproj">
+      <Project>{be3b39bc-694b-4c73-b2cc-12074d160c32}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\..\Other\Study\Programming\C#\Lab5 SoftConstr\DAL\DAL.csproj">
+      <Project>{f8b6bba5-8f1e-4249-a5b8-16cd8ddc7738}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\..\Other\Study\Programming\C#\Lab5 SoftConstr\Interfaces\Interfaces.csproj">
+      <Project>{0f001f1d-bae2-42b9-838a-b8fad5acd678}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,6 +8,7 @@ namespace Projectile.Model
 {
     public class FakeProject
     {
+        public int id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public FakeProject(string n, string d) 

@@ -1,4 +1,5 @@
 ﻿using Projectile.MVVM;
+using Projectile.Navigation;
 using Projectile.View.Pages;
 using System;
 using System.Collections.Generic;
@@ -12,27 +13,22 @@ namespace Projectile.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        Frame frame {  get; set; }
-        private ProjectPage projectPage { get; set; }
+        public NavigationStore NavigationStore { get; set; }
 
-        private BoardPage boardPage { get; set; }
-
-        private TodayPage todayPage { get; set; }
-        public MainWindowViewModel(Frame f)
+        Frame MainFrame { get; set; }
+        public Page CurrentPage => NavigationStore._currentPage;
+        public MainWindowViewModel (Frame mainFrame)
         {
-            frame = f;
-            projectPage=new ProjectPage(frame);
-            boardPage=new BoardPage();
-            todayPage=new TodayPage();
+            NavigationStore = new NavigationStore();
+            NavigationStore.CurrentPageChanged += OnCurrentPageChanged;
+            MainFrame = mainFrame;
+            NavigationStore.CurrentPage = new ProjectPage(NavigationStore);
         }
 
-        public RelayCommand ChangeViewToProjects => new RelayCommand(execute => ChangePage(projectPage));
-        public RelayCommand ChangeViewToBoards => new RelayCommand(execute => ChangePage(boardPage));
-        public RelayCommand ChangeViewToTodday => new RelayCommand(execute => ChangePage(todayPage));
-
-        public void ChangePage(object Page)
+        private void OnCurrentPageChanged()
         {
-            frame.Navigate(Page);
+            OnPropertyChanged(nameof(CurrentPage));
+            MainFrame.Navigate(CurrentPage);
         }
     }
 }

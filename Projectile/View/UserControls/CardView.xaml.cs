@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projectile.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,5 @@ namespace Projectile.View.UserControls
         {
             InitializeComponent();
         }
-
     }
 }

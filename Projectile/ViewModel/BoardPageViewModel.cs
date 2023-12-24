@@ -32,7 +32,7 @@ namespace Projectile.ViewModel
         public RelayCommand ChangeProject => new RelayCommand(execute => ChangeProjectSettings());
         public RelayCommand DeleteCurrentProject => new RelayCommand(execute => DeleteProject());
         public RelayCommand UpdateCurrentProject => new RelayCommand(execute => UpdateProject());
-        public RelayCommand Cancel => new RelayCommand(execute => DoNotSave());
+        public RelayCommand Cancel => new RelayCommand(execute => DoNotSaveProject());
 
         public UserService userService;
         public TakeProject OwnerProject { get; set; }
@@ -64,7 +64,7 @@ namespace Projectile.ViewModel
         public void ChangeProjectSettings()
         {
             updateProject = new UpdateProject(this);
-            updateProject.Show();
+            updateProject.ShowDialog();
         }
 
         public void UpdateProject()
@@ -77,9 +77,9 @@ namespace Projectile.ViewModel
             projectService.DeleteProject(OwnerProject.Id);
             Store.ChangePage(new ProjectPage(Store,db));
         }
-        public void DoNotSave()
+        public void DoNotSaveProject()
         {
-            createBoard.Close();
+            updateProject.Close();
         }
 
         private TakeBoard selectedBoard;
@@ -102,7 +102,7 @@ namespace Projectile.ViewModel
             selectedBoard.Users = new List<int>();
             userstring = "Пользователь1;Пользователь2;Пользователь3;";
             createBoard =new CreateBoard(this);
-            createBoard.Show();         
+            createBoard.ShowDialog();         
         }
 
         public void DoNotSaveBoard()

@@ -3,17 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Projectile.View.UpdateForm"
+        xmlns:local="clr-namespace:Projectile.View.UpdateForm" xmlns:viewmodel="clr-namespace:Projectile.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:TaskPageViewModel}"
         mc:Ignorable="d"
-        Title="UpdateBoard" Height="250" Width="309">
+        Title="UpdateBoard" Height="250" Width="309"
+        ResizeMode="NoResize">
     <Grid Margin="0,0,0,-6">
+        <Image Source="/View/UpdateForm/SmallFormBackground.jpg" Stretch="Fill"/>
         <Label Content="Имя доски" HorizontalAlignment="Left" Margin="44,8,0,0" VerticalAlignment="Top" Width="89" Height="25"/>
         <Label Content="Описание доски" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="124" Height="24"/>
-        <TextBox Name="name" Text="{Binding SelectedBoard.Name}" HorizontalAlignment="Left" Height="19" Margin="139,14,0,0" VerticalAlignment="Top" Width="150"/>
-        <TextBox Name="description" Text="{Binding SelectedBoard.Description}" HorizontalAlignment="Left" Margin="139,52,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="69"/>
-        <Button Name="Save" Content="Сохранить" Command="{Binding CreateBoard}" HorizontalAlignment="Left" Margin="223,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.716,0.222" Width="66"/>
+        <TextBox Name="name" Text="{Binding OwnerBoard.Name}" HorizontalAlignment="Left" Height="19" Margin="139,14,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox Name="description" Text="{Binding OwnerBoard.Description}" HorizontalAlignment="Left" Margin="139,52,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="69"/>
+        <Button Name="Save" Content="Сохранить" Command="{Binding ChangeBoardInDB}" HorizontalAlignment="Left" Margin="223,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.716,0.222" Width="66"/>
+        <Button Name="Delete" Content="Удалить" Command="{Binding DeleteBoardFromDB}" HorizontalAlignment="Left" Margin="83,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.716,0.222" Width="66"/>
         <Button Name="Cancel" Content="Отмена" Command="{Binding Cancel}"  HorizontalAlignment="Left" Margin="154,189,0,0" VerticalAlignment="Top" Width="62"/>
-        <TextBox Name="users" Text="{Binding Path=userstring, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="47" Margin="139,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBox Name="users" Text="{Binding Path=OwnerBoardString, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="47" Margin="139,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
         <Label Content="Пользователи &#xD;&#xA;     проекта" HorizontalAlignment="Left" Margin="28,123,0,0" VerticalAlignment="Top" Width="88" Height="53"/>
     </Grid>
 </Window>

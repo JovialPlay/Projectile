@@ -6,15 +6,16 @@
              xmlns:local="clr-namespace:Projectile.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="250">
+    <ScrollViewer>
     <ItemsControl x:Name="CardTemplate" Background="Transparent" >
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <UniformGrid Margin="5 5 5 5"/>
+                <UniformGrid Margin="5 5 5 5" Columns="2" />
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Grid Margin="5 5 5 5">
+                <Grid Margin="5 5 5 5" Height="270" VerticalAlignment="Top">
                     <Rectangle     
           RadiusX="10" 
           RadiusY="10" 
@@ -34,18 +35,36 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
-                            <RowDefinition/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <!--<Rectangle Grid.Column="0" Fill="#FFFFFF" Margin="5 8 5 8" RadiusX="25" RadiusY="25"/>-->
-                            <Label x:Name="CardName"  Content="{Binding Name}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Script" FontSize="24" FontWeight="Bold"/>
+                            <TextBox x:Name="CardName" Background="Transparent" BorderThickness="0" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Script" FontSize="24" FontWeight="Bold"/>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <local:TaskView x:Name="Tasklist" Grid.Row="0" Margin="2 2 2 2" DataContext="{Binding Tasks}"/>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <local:TaskView x:Name="Tasklist" Grid.Row="0" Margin="2 2 2 2" DataContext="{Binding Tasks}"/>
+                            </Grid>
+                            <Grid Grid.Row="2" Margin="0 0 3 3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="1" Source="/View/UserControls/Add.png"/>
+                                <Button Grid.Column="1" 
+                                    Command="{Binding ElementName=CardTemplate, 
+                                    Path=DataContext.AddTask}"
+                                    CommandParameter="{Binding}"
+                                    Background="Transparent"
+                                    Panel.ZIndex="1"/>
+                            </Grid>
                         </Grid>
-                    </Grid>
                 </Grid>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>
+    </ScrollViewer>
 </UserControl>

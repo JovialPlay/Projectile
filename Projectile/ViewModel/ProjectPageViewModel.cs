@@ -66,7 +66,7 @@ namespace Projectile.ViewModel
             SelectedProject.Access = "Приватный";
             SelectedProject.Description = "Описание Проекта";
             createProject = new CreateProject(this);
-            createProject.Show();
+            createProject.ShowDialog();
 
         }
 

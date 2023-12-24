@@ -28,7 +28,8 @@ namespace Projectile.View.Pages
         public TaskPage(NavigationStore store, DbReposSQL db, TakeBoard ownerBoard)
         {
             InitializeComponent();
-            TPVM=new TaskPageViewModel(store, db, ownerBoard);
+            TPVM = new TaskPageViewModel(store, db, ownerBoard);
+            DataContext = TPVM;
             TasksBar.CardTemplate.ItemsSource = TPVM.Cards;
         }
     }

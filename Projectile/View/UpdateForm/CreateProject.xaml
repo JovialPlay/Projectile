@@ -7,8 +7,10 @@
         xmlns:local="clr-namespace:Projectile.View.UpdateForm" d:DataContext="{d:DesignInstance Type=vm:ProjectPageViewModel}"
         mc:Ignorable="d"
         Title="CreateProject" Height="250" Width="309"
-        Name="CreateProjectWindow">
+        Name="CreateProjectWindow"
+        ResizeMode="NoResize">
     <Grid Margin="0,0,0,-6">
+        <Image Source="/View/UpdateForm/SmallFormBackground.jpg" Stretch="Fill"/>
         <Label Content="Имя проекта" HorizontalAlignment="Left" Margin="44,8,0,0" VerticalAlignment="Top" Width="89" Height="25"/>
         <Label Content="Описание проекта" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="124" Height="24"/>
         <Label Content="Доступ" HorizontalAlignment="Left" Margin="80,140,0,0" VerticalAlignment="Top" Width="54" Height="25"/>

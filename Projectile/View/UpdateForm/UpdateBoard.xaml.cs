@@ -10,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projectile.View.UserControls
+namespace Projectile.View.UpdateForm
 {
     /// <summary>
-    /// Логика взаимодействия для TaskView.xaml
+    /// Логика взаимодействия для UpdateBoard.xaml
     /// </summary>
-    public partial class CardView : UserControl
+    public partial class UpdateBoard : Window
     {
-        public CardView()
+        public UpdateBoard()
         {
             InitializeComponent();
         }
-
     }
 }

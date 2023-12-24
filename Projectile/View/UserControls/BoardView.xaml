@@ -15,6 +15,11 @@
         <ItemsControl.ItemTemplate>
             <DataTemplate>
                 <Grid Margin="9 9 9 9">
+                    <Button Command="{Binding ElementName=BoardTemplate, 
+                                    Path=DataContext.GoToTasks}"
+                                    CommandParameter="{Binding}"
+                                    Background="Transparent"
+                                    Panel.ZIndex="1"/>
                     <Rectangle RadiusX="10" RadiusY="10" Stroke="#543407" StrokeThickness="0.5">
                         <Rectangle.Effect>
                             <DropShadowEffect  ShadowDepth="5" BlurRadius="10" Color="#1C0E00"/>

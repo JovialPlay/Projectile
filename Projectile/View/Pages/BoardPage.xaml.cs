@@ -1,4 +1,7 @@
-﻿using Projectile.ViewModel;
+﻿using DAL.Repository;
+using DTO;
+using Projectile.Navigation;
+using Projectile.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +24,12 @@ namespace Projectile.View.Pages
     /// </summary>
     public partial class BoardPage : Page
     {
-        public BoardPage()
+        public BoardPage(NavigationStore ns, DbReposSQL db, TakeProject project)
         {
             InitializeComponent();
-            BoardPageViewModel boardPageViewModel = new BoardPageViewModel();
-            BoardBar.BoardTemplate.ItemsSource = boardPageViewModel.FakeBoards;
+            BoardPageViewModel boardPageViewModel = new BoardPageViewModel(ns,db,project);
+            DataContext = boardPageViewModel;
+            BoardBar.BoardTemplate.ItemsSource = boardPageViewModel.Boards;
         }
     }
 }

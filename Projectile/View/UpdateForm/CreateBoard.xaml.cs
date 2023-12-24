@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projectile.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,20 +11,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projectile.View.UserControls
+namespace Projectile.View.UpdateForm
 {
     /// <summary>
-    /// Логика взаимодействия для TaskView.xaml
+    /// Логика взаимодействия для CreateBoard.xaml
     /// </summary>
-    public partial class CardView : UserControl
+    public partial class CreateBoard : Window
     {
-        public CardView()
+        public CreateBoard(BoardPageViewModel bpvm)
         {
             InitializeComponent();
+            DataContext = bpvm;
         }
-
     }
 }

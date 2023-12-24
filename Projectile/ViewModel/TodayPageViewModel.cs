@@ -1,5 +1,4 @@
-﻿using Projectile.Model;
-using Projectile.MVVM;
+﻿using Projectile.MVVM;
 using Projectile.Navigation;
 using System;
 using System.Collections.Generic;

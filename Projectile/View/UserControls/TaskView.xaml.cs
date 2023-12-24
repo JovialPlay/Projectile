@@ -24,18 +24,5 @@ namespace Projectile.View.UserControls
         {
             InitializeComponent();
         }
-
-        private  string taskname;
-
-        public string Taskname
-        {
-            get { return taskname; }
-            set 
-            { 
-                taskname = value; 
-                Name.Content = taskname;
-            }
-        }
-
     }
 }

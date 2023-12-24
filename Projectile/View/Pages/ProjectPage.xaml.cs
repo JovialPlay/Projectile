@@ -1,4 +1,5 @@
-﻿using Projectile.Navigation;
+﻿using DAL.Repository;
+using Projectile.Navigation;
 using Projectile.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,13 @@ namespace Projectile.View.Pages
     public partial class ProjectPage : Page
     {
         ProjectPageViewModel ppvm {  get; set; }
-        public ProjectPage(NavigationStore navigationStore)
+        public ProjectPage(NavigationStore navigationStore , DbReposSQL db)
         {
             InitializeComponent();
-            ppvm = new ProjectPageViewModel(navigationStore);
-            ProjectTemplate.ItemsSource = ppvm.FakeProjects;
+            ppvm = new ProjectPageViewModel(navigationStore,db);
+            DataContext = ppvm;
+            ProjectTemplate.ItemsSource = ppvm.Projects;
             ProjectTemplate.DataContext = ppvm;
-            DataContext=ppvm;
         }
     }
 }

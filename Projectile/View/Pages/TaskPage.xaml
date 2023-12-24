@@ -10,6 +10,6 @@
       Title="TaskPage">
 
     <Grid>
-        <UserControl:TaskView  x:Name="TasksBar" Grid.Column="1" Margin="10 10 10 10"/>
+        <UserControl:CardView  x:Name="TasksBar" Grid.Column="1" Margin="10 10 10 10"/>
     </Grid>
 </Page>

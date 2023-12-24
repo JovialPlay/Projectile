@@ -1,6 +1,4 @@
-﻿using DAL.Repository;
-using DTO;
-using Projectile.Navigation;
+﻿using DTO;
 using Projectile.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -14,22 +12,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projectile.View.Pages
+namespace Projectile.View.UpdateForm
 {
     /// <summary>
-    /// Логика взаимодействия для TaskPage.xaml
+    /// Логика взаимодействия для CreateProject.xaml
     /// </summary>
-    public partial class TaskPage : Page
+    public partial class CreateProject : Window
     {
-        TaskPageViewModel TPVM;
-        public TaskPage(NavigationStore store, DbReposSQL db, TakeBoard ownerBoard)
+        ProjectPageViewModel ppvm { get; set; }
+        public CreateProject(ProjectPageViewModel projectPageViewModel)
         {
             InitializeComponent();
-            TPVM=new TaskPageViewModel(store, db, ownerBoard);
-            TasksBar.CardTemplate.ItemsSource = TPVM.Cards;
+            ppvm = projectPageViewModel;
+            DataContext = ppvm;
+            access.ItemsSource = ppvm.ProjectsAccess;
         }
+
     }
 }

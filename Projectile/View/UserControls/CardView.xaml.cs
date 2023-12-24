@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projectile.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,22 +24,6 @@ namespace Projectile.View.UserControls
         public CardView()
         {
             InitializeComponent();
-        }
-
-        private string cardname;
-        public string Cardname
-        {
-            get { return cardname; }
-            set
-            {
-                cardname = value;
-                CardName.Content = cardname;
-            }
-        }
-
-        private void CardName_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            CardName.FontSize = e.NewSize.Height * 0.5;
         }
     }
 }

@@ -1,5 +1,9 @@
-﻿using Projectile.View.UserControls;
-using Projectile.View.UserLayouts;
+﻿using Projectile.MVVM;
+using Projectile.Navigation;
+using Projectile.View;
+using Projectile.View.Pages;
+using Projectile.View.UserControls;
+using Projectile.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,73 +23,12 @@ namespace Projectile
 {
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel mainWindowViewModel { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-        }
-        private void Today_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            ProjectsBar.Visibility = Visibility.Collapsed;
-            TasksBar.Visibility = Visibility.Collapsed;
-            TodayBar.Visibility = Visibility.Visible;
-            BoardBar.Visibility = Visibility.Collapsed;
-        }
-
-        private void Projects_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            ProjectsBar.Visibility = Visibility.Visible;
-            TasksBar.Visibility = Visibility.Collapsed;
-            TodayBar.Visibility = Visibility.Collapsed;
-            BoardBar.Visibility = Visibility.Collapsed;
-        }
-
-        private void Boards_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            ProjectsBar.Visibility = Visibility.Collapsed;
-            TasksBar.Visibility = Visibility.Collapsed;
-            TodayBar.Visibility = Visibility.Collapsed;
-            BoardBar.Visibility = Visibility.Visible;
-        }
-
-        private void Cards_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            ProjectsBar.Visibility = Visibility.Collapsed;
-            TasksBar.Visibility = Visibility.Visible;
-            TodayBar.Visibility = Visibility.Collapsed;
-            BoardBar.Visibility = Visibility.Collapsed;
-        }
-
-        private void Today_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Today_Loaded_1()
-        {
-
-        }
-
-        private void PanelMouseEnter(object sender, MouseEventArgs e)
-        {
-            LevelSelecrorButton obj = (LevelSelecrorButton)sender;
-            obj.EnterColor();
-        }
-        private void PanelMouseOut(object sender, MouseEventArgs e)
-        {
-            LevelSelecrorButton obj = (LevelSelecrorButton)sender;
-            obj.OutColor();
-        }
-
-        public void Menu_TargetUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (!UpMenu.SendNavi())
-            {
-                Navigation.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                Navigation.Visibility = Visibility.Visible;
-            }
+            mainWindowViewModel = new MainWindowViewModel(MainFrame);
+            DataContext = mainWindowViewModel;
         }
     }
 }

@@ -26,10 +26,6 @@
                     <RowDefinition Height="25*"/>
                     <RowDefinition Height="25*"/>
                 </Grid.RowDefinitions>
-                <local:TaskView Grid.Row="0" Taskname="Посадить дерево" Margin="5 5 5 5"/>
-                <local:TaskView Grid.Row="1" Taskname="Посадить дерево" Margin="5 5 5 5"/>
-                <local:TaskView Grid.Row="2" Taskname="Посадить дерево" Margin="5 5 5 5"/>
-                <local:TaskView Grid.Row="3" Taskname="Посадить дерево" Margin="5 5 5 5"/>
             </Grid>
         </Grid>
     </Grid>

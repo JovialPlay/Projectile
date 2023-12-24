@@ -3,12 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:UserControl="clr-namespace:Projectile.View.UserControls"
-        xmlns:UserLayout="clr-namespace:Projectile.View.UserLayouts"
-        xmlns:local="clr-namespace:Projectile"
+        xmlns:local="clr-namespace:Projectile" 
+        xmlns:viewmodel="clr-namespace:Projectile.ViewModel" 
+        xmlns:View="clr-namespace:Projectile.View.Pages" d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
-        Title="Projectile" Height="450" Width="800">
-    <Window.Resources>
-    </Window.Resources>
-    <Frame Source="MainPage.xaml"/>
+        Title="Projectile" 
+        Height="450" 
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Background2.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FFD5A8" Name="UpMenu">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="19*"/>
+                <ColumnDefinition Width="8*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BackButton" Panel.ZIndex="1" Grid.Column="0" Background="Transparent" Command="" BorderThickness="0"/>
+            <Image x:Name="Back" Grid.Column="0" Panel.ZIndex="0" Height="20" Width="20" Source="/View/UserControls/Arrow.png" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Button x:Name="HomeButton" Panel.ZIndex="1" Grid.Column="1" Background="Transparent" Command="{Binding Home}" BorderThickness="0"/>
+            <Image x:Name="Home" Grid.Column="1" Panel.ZIndex="0" Height="21" Width="21" Source="/View/UserControls/Home.png"/>
+            <Button x:Name="StatButton" Panel.ZIndex="1" Grid.Column="2" Background="Transparent" Command="" BorderThickness="0"/>
+            <Image x:Name="Stats"  Grid.Column="2" Panel.ZIndex="0" Height="23" Width="23" Source="/View/UserControls/Stat.png"/>
+            <Button x:Name="ProfileButton" Panel.ZIndex="1" Grid.Column="7" Background="Transparent" Command="" BorderThickness="0"/>
+            <Image Grid.Column="7" Source="/View/UserControls/149071.png" Margin="2 2 2 2"/>
+        </Grid>
+        <Frame Grid.Row="1" x:Name="MainFrame"/>
+    </Grid>
 </Window>

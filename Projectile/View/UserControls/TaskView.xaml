@@ -6,16 +6,27 @@
              xmlns:local="clr-namespace:Projectile.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="75" d:DesignWidth="200">
-    <Grid>
-        <Rectangle Fill="#FFFFFF" RadiusX="20" RadiusY="20"/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75*"/>
-                <ColumnDefinition Width="25*"/>
-            </Grid.ColumnDefinitions>
-            <Label x:Name="Name"  Grid.Column="0"  Style="{StaticResource LableFont}" Content="Продать душу" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Rectangle Grid.Column="1" Fill="#00FFFF"  MinWidth="3" HorizontalAlignment="Center"/>
-            <Rectangle Grid.Column="1" Fill="#00FFFF"  MinWidth="3" HorizontalAlignment="Center" Margin="-15 0 0 0"/>
-        </Grid>
-    </Grid>
+    <ItemsControl x:Name="TaskTemplate" Background="Transparent" ItemsSource="{Binding}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid Columns="1" Margin="5 5 5 5"/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Rectangle Fill="#FFFFFF" RadiusX="20" RadiusY="20" Margin="5 5 5 5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75*"/>
+                            <ColumnDefinition Width="25*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="Name"  Grid.Column="0"  Style="{StaticResource LableFont}" Content="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Rectangle Grid.Column="1" Fill="#00FFFF"  MinWidth="3" HorizontalAlignment="Center"/>
+                        <Rectangle Grid.Column="1" Fill="#00FFFF"  MinWidth="3" HorizontalAlignment="Center" Margin="-15 0 0 0"/>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
 </UserControl>

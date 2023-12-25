@@ -22,6 +22,8 @@ namespace Projectile.ViewModel
 
         readonly DbReposSQL db;
 
+        private int userid;
+
         private UpdateProject updateProject;
 
         private ProjectService projectService;
@@ -46,8 +48,9 @@ namespace Projectile.ViewModel
         public BoardService boardService {  get; set; }
         public List<TakeBoard> Boards { get; set; }
 
-        public BoardPageViewModel(NavigationStore _navigationStore, DbReposSQL context, TakeProject ownerProject)
+        public BoardPageViewModel(NavigationStore _navigationStore, DbReposSQL context, TakeProject ownerProject, int id)
         {
+            userid = id;
             Store = _navigationStore;
             db = context;
             boardService = new BoardService(db);
@@ -59,7 +62,7 @@ namespace Projectile.ViewModel
         }
         public void ChangePage(TakeBoard board)
         {
-            Store.CurrentPage = new TaskPage(Store, db, board);
+            Store.CurrentPage = new TaskPage(Store, db, board, userid);
         }
         public void ChangeProjectSettings()
         {
@@ -69,13 +72,13 @@ namespace Projectile.ViewModel
 
         public void UpdateProject()
         {
-            projectService.UpdateProject(OwnerProject, 1);
+            projectService.UpdateProject(OwnerProject, userid);
             updateProject.Close();
         }
         public void DeleteProject()
         {
             projectService.DeleteProject(OwnerProject.Id);
-            Store.ChangePage(new ProjectPage(Store,db));
+            Store.ChangePage(new ProjectPage(Store,db, userid));
         }
         public void DoNotSaveProject()
         {
@@ -141,7 +144,7 @@ namespace Projectile.ViewModel
                     }
                 }
             }
-            boardService.CreateBoard(SelectedBoard, 1);
+            boardService.CreateBoard(SelectedBoard, userid);
             createBoard.Close();
         }
     }

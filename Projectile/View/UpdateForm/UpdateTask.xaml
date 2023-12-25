@@ -1,0 +1,42 @@
+﻿<Window x:Class="Projectile.View.UpdateForm.UpdateTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projectile.View.UpdateForm"
+        mc:Ignorable="d"
+            Title="UpdateTask" Height="730" Width="500">
+    <Grid>
+        <Image Source="/View/UpdateForm/SmallBack.jpg" Stretch="UniformToFill" Opacity="0.2"/>
+        <Label Content="Имя задачи" FontWeight="Bold" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Left" Height="32" Margin="45,40,0,0" VerticalAlignment="Top" Width="105" FontSize="16"/>
+        <Label Content="Описание &#xD;&#xA;  Задачи" FontWeight="Bold" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Left" Margin="61,80,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Срок Выполнения" FontWeight="Bold" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Статус" FontWeight="Bold" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Left" Margin="90,491,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Теги задачи" FontWeight="Bold" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Left" Margin="45,539,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Проверяющий" FontWeight="Bold" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Left" Margin="42,619,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Ответственный" FontWeight="Bold" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Left" Margin="26,575,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.498,1.381" FontSize="16"/>
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="168,40,0,0" TextWrapping="Wrap" Text="{Binding SelectedTask.Name}" VerticalAlignment="Top" Width="295"/>
+        <TextBox HorizontalAlignment="Left" Height="139" Margin="168,80,0,0" TextWrapping="Wrap" Text="{Binding SelectedTask.Description}" VerticalAlignment="Top" Width="295"/>
+        <ComboBox HorizontalAlignment="Left" Height="31" Margin="166,491,0,0" VerticalAlignment="Top" Width="294" ItemsSource="{Binding Statuses}" SelectedItem="{Binding SelectedTask.Status}"/>
+        <ComboBox  HorizontalAlignment="Left" Height="26" Margin="168,538,0,0" VerticalAlignment="Top" Width="266" ItemsSource="{Binding Tags}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsIncluded}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Height="26" Margin="168,578,0,0" VerticalAlignment="Top" Width="295" ItemsSource="{Binding BoardUsers}" SelectedItem="{Binding SelectedTask.Workers}"/>
+        <ComboBox HorizontalAlignment="Left" Height="26" Margin="168,626,0,0" VerticalAlignment="Top" Width="295" ItemsSource="{Binding BoardUsers}" SelectedItem="{Binding SelectedTask.Checker}"/>
+        <Calendar HorizontalAlignment="Left" Margin="168,236,0,0" VerticalAlignment="Top" Height="171" Width="213" SelectedDate="{Binding SelectedTask.Deadline, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button BorderThickness="0" HorizontalAlignment="Left" Height="25" Margin="448,539,0,0" VerticalAlignment="Top" Width="25" Command="{Binding }">
+            <Button.Background>
+                <ImageBrush TileMode="Tile" ImageSource="/View/UpdateForm/Add.png"/>
+            </Button.Background>
+        </Button>
+        <Button Command="{Binding SaveTaskClick}" Content="Сохранить" HorizontalAlignment="Left" Height="20" Margin="386,676,0,0" VerticalAlignment="Top" Width="87"/>
+        <Button Command="{Binding CancelTaskClick}" Content="Отмена" HorizontalAlignment="Left" Height="20" Margin="283,676,0,0" VerticalAlignment="Top" Width="87"/>
+        <Button Command="{Binding CancelTaskClick}" Content="Удалить" HorizontalAlignment="Left" Height="20" Margin="180,676,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label FontWeight="Bold" FontFamily="DejaVu Sans Mono"  Content="Приоритет" HorizontalAlignment="Left" Margin="61,442,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <ComboBox HorizontalAlignment="Left" Height="31" Margin="168,440,0,0" VerticalAlignment="Top" Width="295" ItemsSource="{Binding Priorities}" SelectedItem="{Binding SelectedTask.Priority}"/>
+    </Grid>
+</Window>

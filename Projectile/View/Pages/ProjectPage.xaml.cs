@@ -24,10 +24,10 @@ namespace Projectile.View.Pages
     public partial class ProjectPage : Page
     {
         ProjectPageViewModel ppvm {  get; set; }
-        public ProjectPage(NavigationStore navigationStore , DbReposSQL db)
+        public ProjectPage(NavigationStore navigationStore , DbReposSQL db,int userid)
         {
             InitializeComponent();
-            ppvm = new ProjectPageViewModel(navigationStore,db);
+            ppvm = new ProjectPageViewModel(navigationStore,db,userid);
             DataContext = ppvm;
             ProjectTemplate.ItemsSource = ppvm.Projects;
             ProjectTemplate.DataContext = ppvm;

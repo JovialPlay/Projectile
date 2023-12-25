@@ -25,10 +25,10 @@ namespace Projectile.View.Pages
     public partial class TaskPage : Page
     {
         TaskPageViewModel TPVM;
-        public TaskPage(NavigationStore store, DbReposSQL db, TakeBoard ownerBoard)
+        public TaskPage(NavigationStore store, DbReposSQL db, TakeBoard ownerBoard,int userid)
         {
             InitializeComponent();
-            TPVM = new TaskPageViewModel(store, db, ownerBoard);
+            TPVM = new TaskPageViewModel(store, db, ownerBoard,userid);
             DataContext = TPVM;
             TasksBar.CardTemplate.ItemsSource = TPVM.Cards;
         }

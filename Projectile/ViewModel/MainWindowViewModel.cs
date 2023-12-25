@@ -2,6 +2,7 @@
 using Projectile.MVVM;
 using Projectile.Navigation;
 using Projectile.View.Pages;
+using Projectile.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +16,21 @@ namespace Projectile.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         public NavigationStore NavigationStore { get; set; }
+
+        private  int userid { get; set; }
         public RelayCommand Home => new RelayCommand(execute => HomeClick());
+        public RelayCommand OpenHelp => new RelayCommand(execute => HelpClick());
         public DbReposSQL db {  get; set; }
         public Frame MainFrame { get; set; }
         public Page CurrentPage => NavigationStore._currentPage;
-        public MainWindowViewModel (Frame mainFrame)
+        public MainWindowViewModel (Frame mainFrame, int id)
         {
             db = new DbReposSQL ();
+            userid = id;
             NavigationStore = new NavigationStore();
             NavigationStore.CurrentPageChanged += OnCurrentPageChanged;
             MainFrame = mainFrame;
-            NavigationStore.CurrentPage = new ProjectPage(NavigationStore,db);
+            NavigationStore.CurrentPage = new ProjectPage(NavigationStore,db, userid);
         }
 
         private void OnCurrentPageChanged()
@@ -41,8 +46,13 @@ namespace Projectile.ViewModel
            {
                navigation.RemoveBackEntry();
            }
-            NavigationStore.ChangePage(new ProjectPage(NavigationStore, db));
+            NavigationStore.ChangePage(new ProjectPage(NavigationStore, db,userid));
         }
 
+        public void HelpClick()
+        {
+            Help h=new Help ();
+            h.ShowDialog();
+        }
     }
 }

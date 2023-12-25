@@ -24,10 +24,10 @@ namespace Projectile.View.Pages
     /// </summary>
     public partial class BoardPage : Page
     {
-        public BoardPage(NavigationStore ns, DbReposSQL db, TakeProject project)
+        public BoardPage(NavigationStore ns, DbReposSQL db, TakeProject project, int userid)
         {
             InitializeComponent();
-            BoardPageViewModel boardPageViewModel = new BoardPageViewModel(ns,db,project);
+            BoardPageViewModel boardPageViewModel = new BoardPageViewModel(ns,db,project,userid);
             DataContext = boardPageViewModel;
             BoardBar.BoardTemplate.ItemsSource = boardPageViewModel.Boards;
         }

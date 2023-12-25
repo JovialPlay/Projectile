@@ -23,7 +23,11 @@ namespace Projectile.ViewModel
 
         readonly DbReposSQL db;
 
+        private int userid;
+
         private ProjectService projectService;
+
+        private UserService userService;
         private CreateProject createProject { get; set; }
 
         public List<string> ProjectsAccess = new List<string> { "Приватный", "Публинчый" };
@@ -35,12 +39,14 @@ namespace Projectile.ViewModel
 
         public List<TakeProject> Projects { get; set; }
 
-        public ProjectPageViewModel(NavigationStore _navigationStore, DbReposSQL context)
+        public ProjectPageViewModel(NavigationStore _navigationStore, DbReposSQL context, int id)
         {
             db = context;
             projectService = new ProjectService(db);
-            Projects=projectService.GetAllProjects();
+            Projects = projectService.GetAllProjects();
             Store = _navigationStore;
+            userid = id;
+            userService = new UserService(db);
         }
 
         private TakeProject selectedProject;
@@ -55,14 +61,14 @@ namespace Projectile.ViewModel
         }
         public void ChangePage(TakeProject project)
         {
-            Store.CurrentPage = new BoardPage(Store,db,project);
+            Store.CurrentPage = new BoardPage(Store,db,project,userid);
         }
 
         public void NewProject()
         {
             SelectedProject = new TakeProject();
             SelectedProject.Name = "Имя проекта";
-            SelectedProject.Owner = "cat";
+            SelectedProject.Owner = userService.GetSingleUser(userid).Login;
             SelectedProject.Access = "Приватный";
             SelectedProject.Description = "Описание Проекта";
             createProject = new CreateProject(this);
@@ -74,7 +80,7 @@ namespace Projectile.ViewModel
         {
             SelectedProject.Access = access;
             Projects.Add(SelectedProject);
-            projectService.CreateProject(SelectedProject, 1);
+            projectService.CreateProject(SelectedProject, userid);
             SelectedProject = null;
             createProject.Close();
             Projects=projectService.GetAllProjects();

@@ -1,0 +1,65 @@
+﻿<Window x:Class="Projectile.View.Windows.Help"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projectile.View.Windows"
+        mc:Ignorable="d"
+        Title="Help" Height="450" Width="800">
+    <Grid>
+        <Image Source="/View/Windows/1679228241_bogatyr-club-p-krasivii-fon-s-kotikami-foni-krasivo-1.jpg" Stretch="UniformToFill" Opacity="0.05"/>
+        <TreeView Background="Transparent">
+            <TreeViewItem Header="О программе">
+                <Label Content="Данная программа предназначена для ведения, создания и планирования задач, объединения их в проекты, подключение к ним других пользователей и совместной работы с ними"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Интерфейс главного окна">
+                <TreeViewItem Header="Кнопка Home">
+                    <Label Content="Кнопка в виде домика. Возвращает вас на страницу проектов"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Кнопка Stat">
+                    <Label Content="Кнопка в виде диаграммы. Переносит вас в окно статистики, где показаны количество выполненых вами задач, количество выполненных задач в проектах и множество другой информации"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Кнопка Info">
+                    <Label Content="Кнопка в виде знака вопроса. Показывает руководство к программе. Сейчас вы находитесь здесь"/>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="Окно проектов">
+                <TreeViewItem Header="Информаиця">
+                    <Label Content="В окне проектов находятся все созданные вами преокты. Здесь можно создать проект и перейти внутрь уже созданного проекта нажатием на иконку проекта"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Создание проекта">
+                    <Label Content="Чтобы создать проект, нажмите на кнопку Создать проект, заполните данные и нажмите кнопку Сохранить"/>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="Окно досок">
+                <TreeViewItem Header="Информация">
+                    <Label Content="Здесь храниться информация о всех частях вашего проекта (досках). В данном окне вы сможете создать доску, отредактировать выбранный проект и перейти на страницу задач, нажав на иконку доски"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Создание доски">
+                    <Label Content="Чтобы создать доску, нажмите на кнопку Создать доску, заполните данные и нажмите на кнопку Сохранить"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Редактирование проекта">
+                    <Label Content="Чтобы отредактировать или удалить проект, нажмите на кнопку Настройки проекта, отредактируйте данные, если нужно, и нажмите Сохранить,если хотите принять изменения или удалить, если хотите удалить проект"/>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="Окно задач">
+                <TreeViewItem Header="Информация">
+                    <Label Content="Здесь хранятся все созданные вами карточки (группы задач) и задачи. На данной странице вы можете создать карточку,создать или отредактировать задачу, а также изменить настройки выбранной доски"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Создание карточки">
+                    <Label Content="Чтобы создать карточку, нажмите на кнопку Создать карточкуи она автоматически появится на экране"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Создание задачи">
+                    <Label Content="Чтобы создать задачу, нажмите на значок + в правом нижнем углу карточки, где вы хотите создать задачу. Заполните данные  открывшемя окне и нажмите кнопку Сохранить. После этого задача появится на экране"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Редактирование доски">
+                    <Label Content="Чтобы отредактировать доску, нажмите на кнопку Настройки доски, отредактируйте данные, если нужно, и нажмите Сохранить,если хотите принять изменения или удалить, если хотите удалить доску"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Редактирование задачи">
+                    <Label Content="Чтобы отредактировать задачу, нажмите на иконку задачи внутри карточки, отредактируйте данные, если нужно, и нажмите Сохранить,если хотите принять изменения или удалить, если хотите удалить задачу"/>
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+
+    </Grid>
+</Window>

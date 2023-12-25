@@ -121,6 +121,7 @@
     <Compile Include="ViewModel\ProjectPageViewModel.cs" />
     <Compile Include="ViewModel\TaskPageViewModel.cs" />
     <Compile Include="ViewModel\TodayPageViewModel.cs" />
+    <Compile Include="ViewModel\UserRegistrationFormViewModel.cs" />
     <Compile Include="View\Pages\BoardPage.xaml.cs">
       <DependentUpon>BoardPage.xaml</DependentUpon>
     </Compile>
@@ -139,11 +140,17 @@
     <Compile Include="View\UpdateForm\CreateProject.xaml.cs">
       <DependentUpon>CreateProject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UpdateForm\CreateTask.xaml.cs">
+      <DependentUpon>CreateTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UpdateForm\UpdateBoard.xaml.cs">
       <DependentUpon>UpdateBoard.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UpdateForm\UpdateProject.xaml.cs">
       <DependentUpon>UpdateProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateForm\UpdateTask.xaml.cs">
+      <DependentUpon>UpdateTask.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\BoardView.xaml.cs">
       <DependentUpon>BoardView.xaml</DependentUpon>
@@ -160,8 +167,14 @@
     <Compile Include="View\UserControls\TodayView.xaml.cs">
       <DependentUpon>TodayView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\UserForm.xaml.cs">
       <DependentUpon>UserForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\UserRegistration.xaml.cs">
+      <DependentUpon>UserRegistration.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -203,11 +216,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UpdateForm\CreateTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UpdateForm\UpdateBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UpdateForm\UpdateProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateForm\UpdateTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,7 +252,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\Help.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\UserForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\UserRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -309,7 +338,30 @@
     <Resource Include="View\UserControls\Add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Resource Include="View\UpdateForm\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\..\Other\Study\Programming\C#\Lab5 SoftConstr\BLL\BLL.csproj">
+      <Project>{be3b39bc-694b-4c73-b2cc-12074d160c32}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\..\Other\Study\Programming\C#\Lab5 SoftConstr\DAL\DAL.csproj">
+      <Project>{f8b6bba5-8f1e-4249-a5b8-16cd8ddc7738}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\..\Other\Study\Programming\C#\Lab5 SoftConstr\Interfaces\Interfaces.csproj">
+      <Project>{0f001f1d-bae2-42b9-838a-b8fad5acd678}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\UpdateForm\SmallBack.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="25333.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Windows\1679228241_bogatyr-club-p-krasivii-fon-s-kotikami-foni-krasivo-1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

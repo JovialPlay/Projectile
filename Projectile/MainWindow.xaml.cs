@@ -24,10 +24,10 @@ namespace Projectile
     public partial class MainWindow : Window
     {
         public MainWindowViewModel mainWindowViewModel { get; set; }
-        public MainWindow()
+        public MainWindow(int userid)
         {
             InitializeComponent();
-            mainWindowViewModel = new MainWindowViewModel(MainFrame);
+            mainWindowViewModel = new MainWindowViewModel(MainFrame,userid);
             DataContext = mainWindowViewModel;
         }
     }

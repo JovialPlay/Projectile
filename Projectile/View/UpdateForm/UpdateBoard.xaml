@@ -8,15 +8,15 @@
         Title="UpdateBoard" Height="250" Width="309"
         ResizeMode="NoResize">
     <Grid Margin="0,0,0,-6">
-        <Image Source="/View/UpdateForm/SmallFormBackground.jpg" Stretch="Fill"/>
-        <Label Content="Имя доски" HorizontalAlignment="Left" Margin="44,8,0,0" VerticalAlignment="Top" Width="89" Height="25"/>
-        <Label Content="Описание доски" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="124" Height="24"/>
+        <Image Source="/View/UpdateForm/SmallBack.jpg" Stretch="UniformToFill" Opacity="0.2"/>
+        <Label FontWeight="Bold" FontFamily="DejaVu Sans Mono" Content="Имя доски" HorizontalAlignment="Left" Margin="44,8,0,0" VerticalAlignment="Top" Width="89" Height="25" FontSize="14"/>
+        <Label FontWeight="Bold" FontFamily="DejaVu Sans Mono" Content="Описание &#xD;&#xA;   доски" HorizontalAlignment="Left" Margin="55,52,0,0" VerticalAlignment="Top" Width="78" Height="57" FontSize="14"/>
         <TextBox Name="name" Text="{Binding OwnerBoard.Name}" HorizontalAlignment="Left" Height="19" Margin="139,14,0,0" VerticalAlignment="Top" Width="150"/>
         <TextBox Name="description" Text="{Binding OwnerBoard.Description}" HorizontalAlignment="Left" Margin="139,52,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="69"/>
         <Button Name="Save" Content="Сохранить" Command="{Binding ChangeBoardInDB}" HorizontalAlignment="Left" Margin="223,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.716,0.222" Width="66"/>
         <Button Name="Delete" Content="Удалить" Command="{Binding DeleteBoardFromDB}" HorizontalAlignment="Left" Margin="83,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.716,0.222" Width="66"/>
         <Button Name="Cancel" Content="Отмена" Command="{Binding Cancel}"  HorizontalAlignment="Left" Margin="154,189,0,0" VerticalAlignment="Top" Width="62"/>
         <TextBox Name="users" Text="{Binding Path=OwnerBoardString, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="47" Margin="139,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Пользователи &#xD;&#xA;     проекта" HorizontalAlignment="Left" Margin="28,123,0,0" VerticalAlignment="Top" Width="88" Height="53"/>
+        <Label FontWeight="Bold" FontFamily="DejaVu Sans Mono" Content="Пользователи &#xD;&#xA;     проекта" HorizontalAlignment="Left" Margin="20,123,0,0" VerticalAlignment="Top" Width="113" Height="53" FontSize="14"/>
     </Grid>
 </Window>

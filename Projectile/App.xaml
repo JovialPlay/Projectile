@@ -11,7 +11,7 @@
                Value="/Resoursec/MainFont.otf"/>
         </Style>
         <Style x:Key="ButtonFont">
-            <Setter Property="TextElement.FontFamily"
+            <Setter Property="TextElement.FontFamily" 
                Value="/Resoursec/MainFont.otf"/>
         </Style>
         <Style x:Key="LableFont">

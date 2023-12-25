@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projectile.View.UpdateForm" xmlns:viewmodel="clr-namespace:Projectile.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:TaskPageViewModel}"
         mc:Ignorable="d"
-        Title="CreateTask" Height="730" Width="500">
+        Title="CreateTask" Height="740" Width="500">
     <Grid>
         <Image Source="/View/UpdateForm/SmallBack.jpg" Stretch="UniformToFill" Opacity="0.2"/>
         <Label Content="Имя задачи" FontWeight="Bold" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Left" Height="32" Margin="45,40,0,0" VerticalAlignment="Top" Width="105" FontSize="16"/>
@@ -18,17 +18,30 @@
         <TextBox HorizontalAlignment="Left" Height="32" Margin="168,40,0,0" TextWrapping="Wrap" Text="{Binding SelectedTask.Name}" VerticalAlignment="Top" Width="295"/>
         <TextBox HorizontalAlignment="Left" Height="139" Margin="168,80,0,0" TextWrapping="Wrap" Text="{Binding SelectedTask.Description}" VerticalAlignment="Top" Width="295"/>
         <ComboBox HorizontalAlignment="Left" Height="31" Margin="166,491,0,0" VerticalAlignment="Top" Width="294" ItemsSource="{Binding Statuses}" SelectedItem="{Binding SelectedTask.Status}"/>
-        <ComboBox  HorizontalAlignment="Left" Height="26" Margin="168,538,0,0" VerticalAlignment="Top" Width="266" ItemsSource="{Binding Tags}">
+        <ComboBox x:Name="TagBox" HorizontalAlignment="Left" Height="26" Margin="168,538,0,0" VerticalAlignment="Top" Width="266" ItemsSource="{Binding takeTags, UpdateSourceTrigger=PropertyChanged}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsIncluded}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" Content="{Binding Name}" IsChecked="{Binding IsIncluded}"/>
+                        <Image Grid.Column="1" Source="/View/UpdateForm/DeleteCard.png"/>
+                        <Button Grid.Column="1" 
+                                Background="Transparent" 
+                                BorderThickness="0"
+                                Command="{Binding ElementName=TagBox, 
+                                Path=DataContext.DeleteTag}"
+                                CommandParameter="{Binding}"/>
+                    </Grid>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
         <ComboBox HorizontalAlignment="Left" Height="26" Margin="168,578,0,0" VerticalAlignment="Top" Width="295" ItemsSource="{Binding BoardUsers}" SelectedItem="{Binding SelectedTask.Workers}"/>
         <ComboBox HorizontalAlignment="Left" Height="26" Margin="168,626,0,0" VerticalAlignment="Top" Width="295" ItemsSource="{Binding BoardUsers}" SelectedItem="{Binding SelectedTask.Checker}"/>
         <Calendar HorizontalAlignment="Left" Margin="168,236,0,0" VerticalAlignment="Top" Height="171" Width="213" SelectedDate="{Binding SelectedTask.Deadline, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button BorderThickness="0" HorizontalAlignment="Left" Height="25" Margin="448,539,0,0" VerticalAlignment="Top" Width="25" Command="{Binding }">
+        <Button Command="{Binding AddTag}" BorderThickness="0" HorizontalAlignment="Left" Height="25" Margin="448,539,0,0" VerticalAlignment="Top" Width="25">
             <Button.Background>
                 <ImageBrush TileMode="Tile" ImageSource="/View/UpdateForm/Add.png"/>
             </Button.Background>

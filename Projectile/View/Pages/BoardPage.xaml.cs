@@ -29,7 +29,6 @@ namespace Projectile.View.Pages
             InitializeComponent();
             BoardPageViewModel boardPageViewModel = new BoardPageViewModel(ns,db,project,userid);
             DataContext = boardPageViewModel;
-            BoardBar.BoardTemplate.ItemsSource = boardPageViewModel.Boards;
         }
     }
 }

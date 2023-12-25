@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Projectile.View.Windows"
+        xmlns:local="clr-namespace:Projectile.View.Windows" xmlns:viewmodel="clr-namespace:Projectile.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="UserForm" Height="350" Width="300">
     <Grid>
@@ -20,9 +20,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Rectangle Grid.Row="0" Fill="White" RadiusX="50" RadiusY="100" Height="60" Width="275"/>
-                <Label Grid.Row="0" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Print" FontSize="22"/>
-                <Rectangle Grid.Row="1" Fill="White" RadiusX="50" RadiusY="100" Height="60" Width="275"/>
-                <Label Grid.Row="1" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Print" FontSize="22"/>
+                <Label Grid.Row="0" Content="{Binding User.Login}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Print" FontSize="22"/>
+                <Button Command="{Binding Out}" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" 
+                        Grid.Row="1" Background="White" Margin="50 50 50 10" Opacity="0.9" Content="Выйти" FontFamily="Segoe Print" FontSize="22"/>
             </Grid>
         </Grid>
     </Grid>

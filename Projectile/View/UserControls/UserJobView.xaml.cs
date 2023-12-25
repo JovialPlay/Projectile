@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projectile.View.Pages
+namespace Projectile.View.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для TodayPage.xaml
+    /// Логика взаимодействия для UserJobView.xaml
     /// </summary>
-    public partial class TodayPage : Page
+    public partial class UserJobView : UserControl
     {
-        public TodayPage()
+        public UserJobView()
         {
             InitializeComponent();
         }

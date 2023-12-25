@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Projectile.View.UserControls"
+             xmlns:local="clr-namespace:Projectile.View.UserControls" xmlns:viewmodel="clr-namespace:Projectile.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:TaskPageViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="250">
     <ScrollViewer>
-    <ItemsControl x:Name="CardTemplate" Background="Transparent" >
+    <ItemsControl x:Name="CardTemplate" Background="Transparent" ItemsSource="{Binding Cards}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
                 <UniformGrid Margin="5 5 5 5" Columns="2" />
@@ -24,24 +24,39 @@
                         <Rectangle.Effect>
                             <DropShadowEffect  ShadowDepth="5" BlurRadius="10" Color="#1C0E00"/>
                         </Rectangle.Effect>
-                        <Rectangle.Fill>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#ffbf66"/>
-                                <GradientStop Color="#543407"  Offset="1.2"/>
-                            </LinearGradientBrush>
-                        </Rectangle.Fill>
-
-                    </Rectangle>
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#ffbf66"/>
+                                    <GradientStop Color="#543407"  Offset="1.2"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="200"/>
                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBox x:Name="CardName" Background="Transparent" BorderThickness="0" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Script" FontSize="24" FontWeight="Bold"/>
-                        </Grid>
-                        <Grid Grid.Row="1">
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" x:Name="CardName" Background="Transparent" BorderThickness="0" Text="{Binding Name}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Script" FontSize="24" FontWeight="Bold"/>
+                                <Button
+                                    Grid.Column="1"
+                                    Command="{Binding ElementName=CardTemplate, 
+                                    Path=DataContext.DeleteCard}"
+                                    CommandParameter="{Binding}"
+                                    Background="Transparent"
+                                    Panel.ZIndex="1"
+                                    BorderThickness="0"/>
+                                <Image 
+                                    Opacity="0.8"
+                                    Grid.Column="1"
+                                    Source="/View/UserControls/DeleteCard.png"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition Height="30"/>
@@ -59,6 +74,7 @@
                                     Path=DataContext.AddTask}"
                                     CommandParameter="{Binding}"
                                     Background="Transparent"
+                                    BorderThickness="0"
                                     Panel.ZIndex="1"/>
                             </Grid>
                         </Grid>

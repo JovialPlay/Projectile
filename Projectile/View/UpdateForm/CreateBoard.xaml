@@ -14,7 +14,7 @@
         <TextBox Name="name" Text="{Binding SelectedBoard.Name}" HorizontalAlignment="Left" Height="19" Margin="139,14,0,0" VerticalAlignment="Top" Width="150"/>
         <TextBox Name="description" Text="{Binding SelectedBoard.Description}" HorizontalAlignment="Left" Margin="139,52,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="69"/>
         <Button Name="Save" Content="Сохранить" Command="{Binding CreateBoard}" HorizontalAlignment="Left" Margin="223,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.716,0.222" Width="66"/>
-        <Button Name="Cancel" Content="Отмена" Command="{Binding Cancel}"  HorizontalAlignment="Left" Margin="154,189,0,0" VerticalAlignment="Top" Width="62"/>
+        <Button Name="Cancel" Content="Отмена" Command="{Binding CancelBoard}"  HorizontalAlignment="Left" Margin="154,189,0,0" VerticalAlignment="Top" Width="62"/>
         <TextBox Name="users" Text="{Binding Path=userstring, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="47" Margin="139,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
         <Label FontWeight="Bold" FontFamily="DejaVu Sans Mono" Content="Пользователи &#xA;     проекта" HorizontalAlignment="Left" Margin="20,123,0,0" VerticalAlignment="Top" Width="114" Height="53" FontSize="14"/>
     </Grid>

@@ -120,7 +120,7 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ProjectPageViewModel.cs" />
     <Compile Include="ViewModel\TaskPageViewModel.cs" />
-    <Compile Include="ViewModel\TodayPageViewModel.cs" />
+    <Compile Include="ViewModel\UserJobPageViewModel.cs" />
     <Compile Include="ViewModel\UserRegistrationFormViewModel.cs" />
     <Compile Include="View\Pages\BoardPage.xaml.cs">
       <DependentUpon>BoardPage.xaml</DependentUpon>
@@ -131,14 +131,17 @@
     <Compile Include="View\Pages\TaskPage.xaml.cs">
       <DependentUpon>TaskPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\TodayPage.xaml.cs">
-      <DependentUpon>TodayPage.xaml</DependentUpon>
+    <Compile Include="View\Pages\UserJobPage.xaml.cs">
+      <DependentUpon>UserJobPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UpdateForm\CreateBoard.xaml.cs">
       <DependentUpon>CreateBoard.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UpdateForm\CreateProject.xaml.cs">
       <DependentUpon>CreateProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateForm\CreateTag.xaml.cs">
+      <DependentUpon>CreateTag.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UpdateForm\CreateTask.xaml.cs">
       <DependentUpon>CreateTask.xaml</DependentUpon>
@@ -161,11 +164,17 @@
     <Compile Include="View\UserControls\CardView.xaml.cs">
       <DependentUpon>CardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\TaskPanel.xaml.cs">
+      <DependentUpon>TaskPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\TaskView.xaml.cs">
       <DependentUpon>TaskView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\TodayView.xaml.cs">
-      <DependentUpon>TodayView.xaml</DependentUpon>
+    <Compile Include="View\UserControls\TaskView2.xaml.cs">
+      <DependentUpon>TaskView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\UserJobView.xaml.cs">
+      <DependentUpon>UserJobView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
@@ -204,7 +213,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\TodayPage.xaml">
+    <Page Include="View\Pages\UserJobPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UpdateForm\CreateProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateForm\CreateTag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,11 +257,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControls\TaskPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControls\TaskView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\TodayView.xaml">
+    <Page Include="View\UserControls\TaskView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\UserJobView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -362,6 +383,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Windows\1679228241_bogatyr-club-p-krasivii-fon-s-kotikami-foni-krasivo-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\UserControls\DeleteCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\UpdateForm\DeleteCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Jobs.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

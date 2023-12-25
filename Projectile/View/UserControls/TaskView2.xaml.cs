@@ -1,6 +1,4 @@
-﻿using Projectile.MVVM;
-using Projectile.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projectile.View.UpdateForm
+namespace Projectile.View.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для UpdateTask.xaml
+    /// Логика взаимодействия для TaskView2.xaml
     /// </summary>
-    public partial class UpdateTask : Window
+    public partial class TaskView2 : UserControl
     {
-        public UpdateTask(ViewModelBase TPVM)
+        public TaskView2()
         {
             InitializeComponent();
-            DataContext = TPVM;
         }
     }
 }

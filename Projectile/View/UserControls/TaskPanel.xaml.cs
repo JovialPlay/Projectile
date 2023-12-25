@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Projectile.View.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для TodayView.xaml
+    /// Логика взаимодействия для TaskPanel.xaml
     /// </summary>
-    public partial class TodayView : UserControl
+    public partial class TaskPanel : UserControl
     {
-        public TodayView()
+        public TaskPanel()
         {
             InitializeComponent();
         }

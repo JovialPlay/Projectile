@@ -33,10 +33,5 @@ namespace Projectile.Navigation
             CurrentPage = page;
             OnCurrentPageChanged();
         }
-
-        public void ClearHistory()
-        {
-            
-        }
     }
 }

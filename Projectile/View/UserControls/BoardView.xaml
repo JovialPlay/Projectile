@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Projectile.View.UserControls"
+             xmlns:local="clr-namespace:Projectile.View.UserControls" xmlns:viewmodel="clr-namespace:Projectile.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:BoardPageViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="300">
     <ScrollViewer>
-        <ItemsControl x:Name="BoardTemplate" Background="Transparent" >
+        <ItemsControl x:Name="BoardTemplate" Background="Transparent" ItemsSource="{Binding Boards, UpdateSourceTrigger=PropertyChanged}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Margin="5 5 5 5"/>

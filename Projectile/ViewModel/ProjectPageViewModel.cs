@@ -37,7 +37,15 @@ namespace Projectile.ViewModel
 
         public RelayCommand Cancel => new RelayCommand(execute => DoNotSave());
 
-        public List<TakeProject> Projects { get; set; }
+        private List<TakeProject> projects;
+        public List<TakeProject> Projects 
+        { get { return projects; }
+          set
+            {
+                projects = value;
+                OnPropertyChanged(nameof(Projects));
+            }
+        }
 
         public ProjectPageViewModel(NavigationStore _navigationStore, DbReposSQL context, int id)
         {

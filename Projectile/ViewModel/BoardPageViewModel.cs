@@ -46,7 +46,17 @@ namespace Projectile.ViewModel
         public RelayCommand CancelBoard => new RelayCommand(execute => DoNotSaveBoard());
         public RelayCommand CreateBoard => new RelayCommand(execute => BoardToDb(userstring));
         public BoardService boardService {  get; set; }
-        public List<TakeBoard> Boards { get; set; }
+
+        private List<TakeBoard> boards;
+        public List<TakeBoard> Boards 
+        {
+            get { return boards; }
+            set 
+            {  
+                boards = value; 
+                OnPropertyChanged(nameof(Boards));
+            }
+        }
 
         public BoardPageViewModel(NavigationStore _navigationStore, DbReposSQL context, TakeProject ownerProject, int id)
         {
@@ -79,6 +89,7 @@ namespace Projectile.ViewModel
         {
             projectService.DeleteProject(OwnerProject.Id);
             Store.ChangePage(new ProjectPage(Store,db, userid));
+            updateProject.Close();
         }
         public void DoNotSaveProject()
         {
@@ -146,6 +157,7 @@ namespace Projectile.ViewModel
             }
             boardService.CreateBoard(SelectedBoard, userid);
             createBoard.Close();
+            Boards = boardService.GetProjectBoards(OwnerProject.Id);
         }
     }
 }

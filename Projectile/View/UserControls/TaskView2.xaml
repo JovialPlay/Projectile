@@ -1,12 +1,13 @@
-﻿<UserControl x:Class="Projectile.View.UserControls.TaskView"
+﻿<UserControl x:Class="Projectile.View.UserControls.TaskView2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Projectile.View.UserControls" xmlns:viewmodel="clr-namespace:Projectile.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:TaskPageViewModel}"
+             xmlns:local="clr-namespace:Projectile.View.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="75" d:DesignWidth="200">
-    <ItemsControl x:Name="TaskTemplate" Background="Transparent" ItemsSource="{Binding}" >
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer>
+    <ItemsControl x:Name="TaskTemplate2" Background="Transparent" ItemsSource="{Binding}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
                 <UniformGrid Columns="1" Margin="5 5 5 5"/>
@@ -14,7 +15,7 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Grid>
+                <Grid MinHeight="50" MinWidth="750">
                     <Rectangle Fill="#FFFFFF" RadiusX="20" RadiusY="20" Margin="5 5 5 5"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -25,14 +26,16 @@
                         <Rectangle Grid.Column="1" Fill="#00FFFF"  MinWidth="3" HorizontalAlignment="Center"/>
                         <Rectangle Grid.Column="1" Fill="#00FFFF"  MinWidth="3" HorizontalAlignment="Center" Margin="-15 0 0 0"/>
                     </Grid>
-                    <Button Command="{Binding ElementName=CardTemplate, 
-                    Path=DataContext.ChangeTask}"
-                    BorderThickness="0"
-                    CommandParameter="{Binding}"
-                    Background="Transparent"
-                    Panel.ZIndex="1"/>
-                </Grid>
+                    <Button Command="{Binding ElementName=JobTemplate, 
+                            Path=DataContext.ChangeTask}"
+                            BorderThickness="0"
+                            CommandParameter="{Binding}"
+                            Background="Transparent"
+                            Panel.ZIndex="1"/>
+                    </Grid>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>
+    </ScrollViewer>
 </UserControl>
+    

@@ -1,4 +1,5 @@
 ﻿using DAL.Repository;
+using Interfaces.Repository;
 using Projectile.Navigation;
 using Projectile.ViewModel;
 using System;
@@ -19,16 +20,16 @@ using System.Windows.Shapes;
 namespace Projectile.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ProjectPage.xaml
+    /// Логика взаимодействия для UserJobPage.xaml
     /// </summary>
-    public partial class ProjectPage : Page
+    public partial class UserJobPage : Page
     {
-        ProjectPageViewModel ppvm {  get; set; }
-        public ProjectPage(NavigationStore navigationStore , DbReposSQL db,int userid)
+        UserJobPageViewModel UJPVM { get; set; }
+        public UserJobPage(NavigationStore store, DbReposSQL db,int userid)
         {
             InitializeComponent();
-            ppvm = new ProjectPageViewModel(navigationStore,db,userid);
-            DataContext = ppvm;
+            UJPVM = new UserJobPageViewModel(store, db, userid);
+            DataContext = UJPVM;
         }
     }
 }

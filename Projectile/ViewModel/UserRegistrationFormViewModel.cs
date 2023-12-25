@@ -41,7 +41,7 @@ namespace Projectile.ViewModel
             users= new List<TakeUser>();
             userService = new UserService(db);
             Userdata=new TakeUser();
-            Userdata.Login = "login";
+            Userdata.Login = "cat";
             users =userService.GetAllUsers();
             RegistrationForm = current;
         }

@@ -12,6 +12,7 @@ using Projectile.View.UpdateForm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,36 +27,89 @@ namespace Projectile.ViewModel
         readonly DbReposSQL db;
 
         private int userid;
-        public TakeBoard OwnerBoard { get; set; }
+        public TakeBoard OwnerBoard {  get; set; }
+
+
+        CreateTask createTask { get; set; }
+        CreateTag createTag { get; set; }
+        UpdateBoard updateBoard { get; set; }
+        UpdateTask updateTask { get; set; }
+        public string OwnerBoardString { get; set; }
+        public TakeTag newTag { get; set; }
+
+        public TakeTask BackupTask { get; set; }
+
         public UserService userService { get; set; }
-        public RelayCommand SaveTaskClick => new RelayCommand(execute => SaveTask());
-        public RelayCommand CancelTaskClick => new RelayCommand(execute => DoNotSaveTask());
         public ProjectService projectService { get; set; }
         public BoardService boardService { get; set; }
         PriorityService priorityService { get; set; }
         public StatusService statusService { get; set; }
         public TaskService taskService { get; set; }
         public TagService tagService { get; set; }
-        public string OwnerBoardString { get; set; }
-        public UpdateBoard updateBoard { get; set; }
-        public List<TakeCard> Cards { get; set; }
+        public CardService cardService { get; set; }
+
+        public List<int> Priorities { get; set; }
+
+        private List<TakeCard> cards { get; set; }
+        public List<TakeCard> Cards 
+        { 
+            get { return cards; }
+            set 
+            { 
+                cards = value; 
+                OnPropertyChanged(nameof(Cards));
+            }
+        }
         public List<TakeTask> Tasks { get; set; }
-        public List<string> BoardUsers { get; set; }
+
+        private List<string> boardUsers;
+        public List<string> BoardUsers 
+        {
+            get { return boardUsers; }
+            set
+            {
+                boardUsers = value;
+                OnPropertyChanged(nameof(BoardUsers));
+            }
+        }
+
         public List<string> Statuses { get; set; }
         public List<TakeTag> Tags { get; set; }
-        public List<int> Priorities { get; set; }
-        CreateTask createTask { get; set; }
+
+        public List<TakeTag> takeTags
+        {
+            get 
+            {
+                return Tags;
+            }
+            set 
+            { 
+                Tags= value;
+                OnPropertyChanged(nameof(takeTags));
+            }
+        }
+
+        public RelayCommand DeleteCard => new RelayCommand(execute => DeleteCardFromDb((TakeCard)execute));
+        public RelayCommand SaveTaskClick => new RelayCommand(execute => SaveTask());
+        public RelayCommand CancelTaskClick => new RelayCommand(execute => DoNotSaveTask());
         public RelayCommand SaveChanges => new RelayCommand(execute => SendCardsToDB());
         public RelayCommand ChangeBoard => new RelayCommand(execute => ChangeBoardSettings());
         public RelayCommand ChangeBoardInDB => new RelayCommand(execute => UpdateBoard());
         public RelayCommand DeleteBoardFromDB => new RelayCommand(execute => DeleteBoard());
-        public RelayCommand Cancel => new RelayCommand(execute => DoNotSave());
+        public RelayCommand CancelBoard => new RelayCommand(execute => DoNotSave());
         public RelayCommand CreateCardClick => new RelayCommand(execute => CreateCard());
-        CardService cardService { get; set; }
-
         public RelayCommand AddTask => new RelayCommand(execute => CreateTask((TakeCard)execute));
+        public RelayCommand AddTag => new RelayCommand(execute => NewTag());
+        public RelayCommand SaveTag => new RelayCommand(execute => SendTagToDb());
+        public RelayCommand CancelTag => new RelayCommand(execute => DoNotSaveTag());
+        public RelayCommand DeleteTag => new RelayCommand(execute => RemoveTagFromDb((TakeTag)execute));
+        public RelayCommand ChangeTask => new RelayCommand(execute => ChangeTaskSettings((TakeTask)execute));
 
-        private TakeTask selectedTask;
+        public RelayCommand CancelUpdateTaskClick => new RelayCommand(execute => DoNotSaveUpdateTask());
+        public RelayCommand UpdateTaskClick => new RelayCommand(execute => UpdateTask());
+        public RelayCommand DeleteTaskClick => new RelayCommand(execute => DeleteTask());
+
+        public TakeTask selectedTask { get; set; }
         public TakeTask SelectedTask
         {
             get { return selectedTask; }
@@ -65,6 +119,7 @@ namespace Projectile.ViewModel
                 OnPropertyChanged(nameof(SelectedTask));
             }
         }
+        
         public TaskPageViewModel(NavigationStore store, DbReposSQL db, TakeBoard ownerBoard,int id)
         {
             userid = id;
@@ -92,7 +147,7 @@ namespace Projectile.ViewModel
             cardService = new CardService(db);
             Cards = cardService.GetBoardsCards(OwnerBoard.Id);
             Statuses=statusService.GetAllNames();
-            Tags = tagService.GetAllTags();
+            takeTags = tagService.GetAllTags();
             Priorities=priorityService.GetAllNames();
         }
 
@@ -107,6 +162,7 @@ namespace Projectile.ViewModel
         {
             int border = 0;
             string one;
+            BoardUsers= new List<string>();
             OwnerBoard.Users = new List<int>();
             if (OwnerBoardString != null)
             {
@@ -127,6 +183,15 @@ namespace Projectile.ViewModel
                 }
             }
             boardService.UpdateBoard(OwnerBoard, userid);
+            OwnerBoard = boardService.GetSingleBoard(OwnerBoard.Id);
+            OwnerBoardString = null;
+            foreach (int j in OwnerBoard.Users)
+            {
+                string s = userService.GetSingleUser(j).Login;
+                BoardUsers.Add(s);
+                s += ";";
+                OwnerBoardString += s;
+            }
             updateBoard.Close();
         }
         public void DeleteBoard()
@@ -142,11 +207,10 @@ namespace Projectile.ViewModel
         public void CreateCard()
         {
             TakeCard card = new TakeCard();
-            card.Name = "Новая Карточка";
+            card.Name = "Новая Карточка"+(Cards.Count+1).ToString();    
             card.Board = OwnerBoard;
             cardService.CreateCard(card, userid);
             Cards = cardService.GetBoardsCards(OwnerBoard.Id);
-            Store.CurrentPage = new TaskPage(Store, db, OwnerBoard, userid);
         }
 
         public void SendCardsToDB()
@@ -159,6 +223,7 @@ namespace Projectile.ViewModel
 
         public void CreateTask(TakeCard card)
         {
+            SendCardsToDB();
             SelectedTask = new TakeTask
             {
                 Card = card.Name,
@@ -184,12 +249,89 @@ namespace Projectile.ViewModel
             taskService.CreateTask(SelectedTask);
             SelectedTask = null;
             createTask.Close();
-            Store.ChangePage(new TaskPage(Store, db, OwnerBoard, userid));
+            Cards = cardService.GetBoardsCards(OwnerBoard.Id);
         }
         public void DoNotSaveTask()
         {
             SelectedTask = null;
             createTask.Close();
+        }
+
+        public void DeleteCardFromDb(TakeCard card)
+        {
+            cardService.DeleteCard(card.Id);
+            Cards=cardService.GetBoardsCards(OwnerBoard.Id);
+
+
+        }
+
+        public void NewTag()
+        {
+            newTag = new TakeTag();
+            newTag.Name = "Имя тега";
+            createTag= new CreateTag(this);
+            createTag.ShowDialog();
+        }
+
+        public void SendTagToDb()
+        {
+            tagService.CreateTag(newTag);
+            newTag = null;
+            createTag.Close();
+            takeTags=tagService.GetAllTags();
+        }
+
+        public void DoNotSaveTag()
+        {
+            newTag = null;
+            createTag.Close();
+        }
+
+        public void RemoveTagFromDb(TakeTag tag)
+        {
+            tagService.DeleteTag(tag.Id);
+            takeTags=tagService.GetAllTags();
+        }
+
+        public void ChangeTaskSettings(TakeTask task)
+        {
+            SendCardsToDB();
+            BackupTask = task;
+            SelectedTask =task;
+            foreach (var t in takeTags)
+            {
+                foreach (var tasktag in SelectedTask.Tags)
+                {
+                    if (t.Name==tasktag)
+                    {
+                        t.IsIncluded = true;
+                    }
+                }
+            }
+            updateTask = new UpdateTask(this); 
+            updateTask.ShowDialog();
+        }
+
+        public void UpdateTask()
+        {
+            taskService.UpdateTask(SelectedTask);
+            SelectedTask = null;
+            Cards = cardService.GetBoardsCards(OwnerBoard.Id);
+            updateTask.Close();
+        }
+
+        public void DeleteTask()
+        {
+            taskService.DeleteTask(SelectedTask.Id);
+            SelectedTask = null;
+            Cards = cardService.GetBoardsCards(OwnerBoard.Id);
+            updateTask.Close();
+        }
+
+        public void DoNotSaveUpdateTask()
+        {
+            updateTask.Close();
+            Cards = cardService.GetBoardsCards(OwnerBoard.Id);
         }
     }
 }

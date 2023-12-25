@@ -1,4 +1,5 @@
-﻿using Projectile.ViewModel;
+﻿using Projectile.MVVM;
+using Projectile.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +14,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Projectile.View.Windows
+namespace Projectile.View.UpdateForm
 {
     /// <summary>
-    /// Логика взаимодействия для UserRegistration.xaml
+    /// Логика взаимодействия для CreateTag.xaml
     /// </summary>
-    public partial class UserRegistration : Window
+    public partial class CreateTag : Window
     {
-        public UserRegistrationFormViewModel ViewModel { get; set; }
-        public UserRegistration()
+        public CreateTag(ViewModelBase TPVM)
         {
             InitializeComponent();
-            ViewModel=new UserRegistrationFormViewModel(this);
-            DataContext = ViewModel;
-            PasswordBox.Password = "cat";
+            DataContext = TPVM;
         }
     }
 }

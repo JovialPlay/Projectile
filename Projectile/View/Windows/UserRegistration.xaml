@@ -22,9 +22,9 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
                 <Rectangle Grid.Row="0" Fill="White" RadiusX="50" RadiusY="100" Height="60" Width="275"/>
-                <TextBox x:Name="LoginBox" Text="{Binding Userdata.Login, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Print" FontSize="22" Width="228"/>
+                <TextBox x:Name="LoginBox" BorderThickness="0" Text="{Binding Userdata.Login, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Print" FontSize="22" Width="228"/>
                 <Rectangle Grid.Row="1" Fill="White" RadiusX="50" RadiusY="100" Height="60" Width="275"/>
-                <PasswordBox x:Name="PasswordBox" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Print" FontSize="22" Width="228"/>
+                <PasswordBox x:Name="PasswordBox" BorderThickness="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe Print" FontSize="22" Width="228"/>
                 <Button Content="Войти" Command="{Binding CheckUserInput}" Background="White" HorizontalAlignment="Center" Height="30" Grid.Row="2" VerticalAlignment="Center" Width="136"/>
             </Grid>
         </Grid>

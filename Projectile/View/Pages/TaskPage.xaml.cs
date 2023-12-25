@@ -30,7 +30,6 @@ namespace Projectile.View.Pages
             InitializeComponent();
             TPVM = new TaskPageViewModel(store, db, ownerBoard,userid);
             DataContext = TPVM;
-            TasksBar.CardTemplate.ItemsSource = TPVM.Cards;
         }
     }
 }

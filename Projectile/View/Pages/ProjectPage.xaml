@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:vm="clr-namespace:Projectile.ViewModel"
-      xmlns:local="clr-namespace:Projectile.View.Pages"
+      xmlns:local="clr-namespace:Projectile.View.Pages" d:DataContext="{d:DesignInstance Type=vm:ProjectPageViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProjectPage">
@@ -30,7 +30,7 @@
             <Button Grid.Column="0" Name="CreateButton" Content="Создать Проект" Command="{Binding CreateNewProject}" Margin="1 1 1 1"/>
         </Grid>
         <ScrollViewer Grid.Row="2" x:Name="ProjectsBar" Grid.Column="1" Margin="10 10 10 10">
-            <ItemsControl x:Name="ProjectTemplate" Background="Transparent" ScrollViewer.CanContentScroll="True">
+            <ItemsControl x:Name="ProjectTemplate" Background="Transparent" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Projects, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Margin="5 5 5 5" Columns="2"/>

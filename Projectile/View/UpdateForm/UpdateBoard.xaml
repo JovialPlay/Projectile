@@ -15,7 +15,7 @@
         <TextBox Name="description" Text="{Binding OwnerBoard.Description}" HorizontalAlignment="Left" Margin="139,52,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="69"/>
         <Button Name="Save" Content="Сохранить" Command="{Binding ChangeBoardInDB}" HorizontalAlignment="Left" Margin="223,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.716,0.222" Width="66"/>
         <Button Name="Delete" Content="Удалить" Command="{Binding DeleteBoardFromDB}" HorizontalAlignment="Left" Margin="83,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.716,0.222" Width="66"/>
-        <Button Name="Cancel" Content="Отмена" Command="{Binding Cancel}"  HorizontalAlignment="Left" Margin="154,189,0,0" VerticalAlignment="Top" Width="62"/>
+        <Button Name="Cancel" Content="Отмена" Command="{Binding CancelBoard}"  HorizontalAlignment="Left" Margin="154,189,0,0" VerticalAlignment="Top" Width="62"/>
         <TextBox Name="users" Text="{Binding Path=OwnerBoardString, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="47" Margin="139,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
         <Label FontWeight="Bold" FontFamily="DejaVu Sans Mono" Content="Пользователи &#xD;&#xA;     проекта" HorizontalAlignment="Left" Margin="20,123,0,0" VerticalAlignment="Top" Width="113" Height="53" FontSize="14"/>
     </Grid>

@@ -95,16 +95,17 @@ namespace Projectile.ViewModel
             takeTags=tagService.GetAllTags();
             Statuses=statusService.GetAllNames();
             Priorities=priorityService.GetAllNames().ToList();
+            BoardUsers = new List<string>();
 
             templates = new List<Template>();
             user = userService.GetSingleUser(userid);
             foreach (var board in boardService.GetUsersBoards(userid))
             {
-                if (taskService.GetAllBoardsTasks(board.Id).Count!=0)
+                if (taskService.GetAllBoardsUsersTasks(board.Id, userid).Count!=0)
                 {
                     Template template = new Template();
                     template.board = boardService.GetSingleBoard(board.Id);
-                    template.tasks = taskService.GetAllBoardsTasks(board.Id);
+                    template.tasks = taskService.GetAllBoardsUsersTasks(board.Id,userid);
                     templates.Add(template);
                 }
 
@@ -113,8 +114,10 @@ namespace Projectile.ViewModel
         public void ChangeTaskSettings(TakeTask task)
         {
             SelectedTask = task;
+            BoardUsers.Clear();
             BoardUsers.Add(SelectedTask.Checker);
-            BoardUsers.Add(SelectedTask.Workers);
+            if (SelectedTask.Checker!=SelectedTask.Workers)
+                BoardUsers.Add(SelectedTask.Workers);
             foreach (var t in takeTags)
             {
                 foreach (var tasktag in SelectedTask.Tags)
@@ -130,6 +133,11 @@ namespace Projectile.ViewModel
         }
         public void UpdateTask()
         {
+            foreach (var t in takeTags)
+            {
+                if (t.IsIncluded)
+                    SelectedTask.Tags.Add(t.Name);
+            }
             taskService.UpdateTask(SelectedTask);
             SelectedTask = null;
             templates.Clear();

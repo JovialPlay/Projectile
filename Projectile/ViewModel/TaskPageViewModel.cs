@@ -207,9 +207,12 @@ namespace Projectile.ViewModel
         public void CreateCard()
         {
             TakeCard card = new TakeCard();
-            card.Name = "Новая Карточка"+(Cards.Count+1).ToString();    
+            card.Name = "Карточка";  
             card.Board = OwnerBoard;
             cardService.CreateCard(card, userid);
+            card=cardService.GetSingleCardByName(card.Name);
+            card.Name="Карточка #"+card.Id.ToString();
+            cardService.UpdateCard(card, userid);
             Cards = cardService.GetBoardsCards(OwnerBoard.Id);
         }
 
@@ -314,6 +317,11 @@ namespace Projectile.ViewModel
 
         public void UpdateTask()
         {
+            foreach(var t in takeTags)
+            {
+                if (t.IsIncluded)
+                    SelectedTask.Tags.Add(t.Name);
+            }
             taskService.UpdateTask(SelectedTask);
             SelectedTask = null;
             Cards = cardService.GetBoardsCards(OwnerBoard.Id);

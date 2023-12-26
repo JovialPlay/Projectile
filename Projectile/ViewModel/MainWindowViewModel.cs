@@ -31,6 +31,7 @@ namespace Projectile.ViewModel
         public RelayCommand GoToJobs => new RelayCommand(execute => JobsClick());
         public RelayCommand ShowUser => new RelayCommand(execute => UserClick());
         public RelayCommand Out => new RelayCommand(execute => OutClick((Window)execute));
+        public RelayCommand ShowStat => new RelayCommand(execute => ShowStatClick());
 
         public Page CurrentPage => NavigationStore._currentPage;
         public MainWindowViewModel (Frame mainFrame, int id)
@@ -81,6 +82,11 @@ namespace Projectile.ViewModel
             UserRegistration userRegistration = new UserRegistration();
             userRegistration.Show();
             Application.Current.Shutdown();
+        }
+
+        public void ShowStatClick()
+        {
+            NavigationStore.ChangePage(new StatPage(NavigationStore, db, User.Id));
         }
     }
 }

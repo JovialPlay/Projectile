@@ -68,7 +68,7 @@ namespace Projectile.ViewModel
             userService = new UserService(db);
             Store = _navigationStore;
             OwnerProject = ownerProject;
-            Boards = boardService.GetProjectBoards(ownerProject.Id);
+            Boards = boardService.GerUsersBoardsInProject(OwnerProject.Id, userid);
         }
         public void ChangePage(TakeBoard board)
         {
@@ -157,7 +157,7 @@ namespace Projectile.ViewModel
             }
             boardService.CreateBoard(SelectedBoard, userid);
             createBoard.Close();
-            Boards = boardService.GetProjectBoards(OwnerProject.Id);
+            Boards = boardService.GerUsersBoardsInProject(OwnerProject.Id, userid);
         }
     }
 }

@@ -119,6 +119,7 @@
     <Compile Include="ViewModel\BoardPageViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ProjectPageViewModel.cs" />
+    <Compile Include="ViewModel\StatPageViewModel.cs" />
     <Compile Include="ViewModel\TaskPageViewModel.cs" />
     <Compile Include="ViewModel\UserJobPageViewModel.cs" />
     <Compile Include="ViewModel\UserRegistrationFormViewModel.cs" />
@@ -127,6 +128,9 @@
     </Compile>
     <Compile Include="View\Pages\ProjectPage.xaml.cs">
       <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\StatPage.xaml.cs">
+      <DependentUpon>StatPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\TaskPage.xaml.cs">
       <DependentUpon>TaskPage.xaml</DependentUpon>
@@ -206,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\ProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\StatPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

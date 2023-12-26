@@ -51,7 +51,7 @@ namespace Projectile.ViewModel
         {
             db = context;
             projectService = new ProjectService(db);
-            Projects = projectService.GetAllProjects();
+            Projects = projectService.GetAllUsersProjects(id);
             Store = _navigationStore;
             userid = id;
             userService = new UserService(db);
@@ -91,7 +91,7 @@ namespace Projectile.ViewModel
             projectService.CreateProject(SelectedProject, userid);
             SelectedProject = null;
             createProject.Close();
-            Projects=projectService.GetAllProjects();
+            Projects=projectService.GetAllUsersProjects(userid);
         }
 
         public void DoNotSave()
